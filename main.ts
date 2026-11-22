@@ -772,7 +772,7 @@ function applyV4A(tree, edit, strict) {
   const st = parseFileState(cur.text);
   let cursor = 0;
   for (const chunk of edit.chunks) {
-    if (chunk.anchor !== null && chunk.anchor !== undefined) {
+    if (chunk.anchor) {
       const found = findAtFirstTier(st.lines, [chunk.anchor], strict, cursor, false);
       if (!found) return { fail: { code: 'no-match', path } };
       cursor = found.occ[0] + 1;
